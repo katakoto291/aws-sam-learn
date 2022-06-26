@@ -5,7 +5,10 @@ describe('Unit test for app handler', function () {
     it('verifies successful response', async () => {
         const event: APIGatewayProxyEvent = {
             httpMethod: 'get',
-            body: '',
+            body: JSON.stringify({
+                a: 55,
+                b: 32,
+            }),
             headers: {},
             isBase64Encoded: false,
             multiValueHeaders: {},
@@ -57,7 +60,7 @@ describe('Unit test for app handler', function () {
         expect(result.statusCode).toEqual(200);
         expect(result.body).toEqual(
             JSON.stringify({
-                message: 'hello world',
+                result: 87,
             }),
         );
     });
